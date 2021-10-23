@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--加载properties文件-->
+    <properties resource="jdbc.properties"></properties>
+
+    <!--定义别名-->
+    <typeAliases>
+        <!-- <typeAlias type="com.lxm.domain.Account" alias="account">
+             </typeAlias>
+             这是单独为一个类取别名。
+             下面的方式会扫描domain包下的所有类取他的小写作为别买
+             Account -> account
+          -->
+        <package name="com.lxm.domain"></package>
+    </typeAliases>
+
+    <!--环境-->
+    <environments default="developement">
+        <environment id="developement">
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"></property>
+                <property name="url" value="${jdbc.url}"></property>
+                <property name="username" value="${jdbc.username}"></property>
+                <property name="password" value="${jdbc.password}"></property>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--加载映射-->
+    <mappers>
+        <!--<mapper resource="com/lxm/mapper/AccountMapper.xml"></mapper>
+            这是单独引入一个映射文件。
+            下面的方式会扫描mapper包下的所有映射文件引入
+        -->
+        <package name="com.lxm.mapper"></package>
+    </mappers>
+
+
+</configuration>
